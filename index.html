@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khitaab | Farm Finance Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0e8;
+    --cream-dark: #ede6d6;
+    --brown: #5c3d1e;
+    --brown-light: #8b6240;
+    --green-dark: #2d4a2d;
+    --green-mid: #3e6b3e;
+    --green-light: #d8e8d0;
+    --text: #2a1f10;
+    --muted: #6b5840;
+    --border: #c9b89a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--green-dark);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    border-bottom: 1px solid #1a2e1a;
+  }
+
+  nav .logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul a {
+    color: #c8d9c0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--cream); }
+
+  /* HERO */
+  header {
+    padding: 7rem 2rem 5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 600;
+    color: var(--green-dark);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  header p.tagline {
+    font-size: 1.1rem;
+    color: var(--brown-light);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background-color: var(--green-dark);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1rem 2.75rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .cta-btn:hover { background-color: var(--green-mid); }
+  .cta-btn.demo:hover { background-color: var(--brown-light); }
+
+  /* SECTIONS */
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  section p {
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background-color: var(--green-light);
+    border: 1px solid #b5ccac;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .feature-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--brown);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background-color: var(--brown);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .step-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+
+  .step-body p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  /* CONTACT */
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--brown-light);
+  }
+
+  .contact-line a {
+    color: var(--green-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--green-mid);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-line a:hover {
+    color: var(--green-dark);
+    border-color: var(--green-dark);
+  }
+
+  .contact-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--border);
+    min-width: 60px;
+    display: inline-block;
+  }
+
+  /* FOOTER */
+  footer {
+    background-color: var(--green-dark);
+    color: #8aab82;
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px) {
+    nav ul { gap: 1rem; }
+    nav ul a { font-size: 0.75rem; }
+    header { padding: 4rem 1.5rem 3.5rem; }
+    section { padding: 3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Khitaab</a>
+  <ul>
+    <li><a href="#what">About</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>Khitaab</h1>
+  <p class="tagline">A financial assistant built for farmers. Track expenses, get reports, ask questions over simple text.</p>
+  <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+    <a href="https://t.me/farmfinance_bot" target="_blank" class="cta-btn">Open on Telegram</a>
+    <a href="https://youtu.be/QvlIrLrDZHM" target="_blank" class="cta-btn" style="background-color: var(--brown); color: var(--cream);">Watch Demo</a>
+  </div>
+</header>
+
+<section id="what">
+  <h2>What is Khitaab?</h2>
+  <p>Khitaab is an AI-powered chatbot designed with farmers in mind. It removes the complexity from farm financial management: no spreadsheets, no apps to learn, no accounting knowledge required.</p>
+  <p>You simply send a text message describing what you spent or earned, and Khitaab keeps track of it all. At any point, you can ask for a full financial report or get guidance on financial decisions specific to your farm.</p>
+  <p>The name <em>Khitaab</em> means address or speech, a direct conversation between you and your finances.</p>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Open the chat</h3>
+        <p>Find Khitaab on Telegram. No sign-up forms or downloads beyond Telegram itself.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Log your expenses in plain language</h3>
+        <p>Type something like "spent 800 on fertiliser today" or "sold wheat for 4500." Khitaab understands natural language, no special format needed.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Request a report anytime</h3>
+        <p>Ask Khitaab for a summary of your expenses, income, or profit for any time period. It will generate a clear breakdown for you.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Ask financial questions</h3>
+        <p>Not sure whether to take out a loan for equipment? Wondering how to budget for the next season? Ask Khitaab and get practical, context-aware advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <h2>Features</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>Expense tracking</h3>
+      <p>Log costs and income through simple text messages. No forms, no categories to set up.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Financial reports</h3>
+      <p>Get a clear summary of where your money is going and what you are earning, on demand.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Financial advice</h3>
+      <p>Ask any question about budgeting, loans, or seasonal planning and get straightforward answers.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Works on Telegram</h3>
+      <p>No new app to install. Runs inside Telegram, which many farmers already use daily.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Have a question or feedback about Khitaab? Reach out directly.</p>
+  <div class="contact-line" style="margin-top: 1.25rem;">
+    <span class="contact-label">Chatbot</span>
+    <a href="https://t.me/farmfinance_bot" target="_blank">t.me/farmfinance_bot</a>
+  </div>
+  <div class="contact-line" style="margin-top: 0.75rem;">
+    <span class="contact-label">Demo</span>
+    <a href="https://youtu.be/QvlIrLrDZHM" target="_blank">Watch on YouTube</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Khitaab. Built for farmers.
+</footer>
+
+</body>
+</html>
